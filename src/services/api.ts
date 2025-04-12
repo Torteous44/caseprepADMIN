@@ -1,7 +1,7 @@
 import axios, { AxiosResponse, AxiosError, InternalAxiosRequestConfig } from 'axios';
 
 // Base URL is always the production URL as specified in the requirements
-const API_BASE_URL = 'https://casepreparedcrud.onrender.com/api/v1';
+const API_BASE_URL = 'http://localhost:8001/api/v1';
 
 // Create an axios instance with default configs
 const api = axios.create({

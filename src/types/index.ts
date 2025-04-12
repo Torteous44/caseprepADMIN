@@ -17,6 +17,10 @@ export interface Template {
   };
   image_url: string;
   version: string;
+  title: string;
+  description_short: string;
+  description_long: string;
+  duration: number;
   created_at?: string;
   updated_at?: string;
 }

@@ -20,6 +20,10 @@ const DEFAULT_TEMPLATE: Template = {
   },
   image_url: "",
   version: "1.0",
+  title: "",
+  description_short: "",
+  description_long: "",
+  duration: 30,
 };
 
 const TemplateForm: React.FC = () => {
@@ -148,6 +152,62 @@ const TemplateForm: React.FC = () => {
       {error && <div className="error-message">{error}</div>}
 
       <form onSubmit={handleSubmit} className="template-form">
+        <div className="form-section">
+          <h2>Template Details</h2>
+
+          <div className="form-group">
+            <label htmlFor="title">Title *</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={template.title}
+              onChange={handleChange}
+              placeholder="User-friendly title for the template"
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="description_short">Short Description *</label>
+            <input
+              type="text"
+              id="description_short"
+              name="description_short"
+              value={template.description_short}
+              onChange={handleChange}
+              placeholder="A brief tagline or summary"
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="description_long">Detailed Description</label>
+            <textarea
+              id="description_long"
+              name="description_long"
+              value={template.description_long}
+              onChange={handleChange}
+              rows={4}
+              placeholder="Detailed description of what the case covers"
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="duration">Duration (minutes) *</label>
+            <input
+              type="number"
+              id="duration"
+              name="duration"
+              value={template.duration}
+              onChange={handleChange}
+              min={10}
+              max={120}
+              required
+            />
+          </div>
+        </div>
+
         <div className="form-section">
           <h2>Basic Information</h2>
 
