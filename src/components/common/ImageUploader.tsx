@@ -39,10 +39,10 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
     try {
       // Simulate progress for better UX
       const progressInterval = setInterval(() => {
-        setUploadProgress((prev) => Math.min(prev + 10, 90));
+        setUploadProgress((prev) => Math.min(prev + 5, 80));
       }, 300);
 
-      // Upload the image to Cloudflare
+      // Upload the image to Cloudflare using direct creator uploads
       const imageUrl = await uploadImageToCloudflare(file);
 
       clearInterval(progressInterval);
