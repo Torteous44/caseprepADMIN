@@ -1,0 +1,78 @@
+.unauthorized-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+}
+
+.unauthorized-card {
+  width: 100%;
+  max-width: 500px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.unauthorized-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.unauthorized-card h1 {
+  margin: 0 0 20px 0;
+  color: #d32f2f;
+  font-size: 28px;
+}
+
+.unauthorized-card p {
+  color: #546e7a;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.unauthorized-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.login-link,
+.home-link {
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.login-link {
+  background-color: #0056b3;
+  color: white;
+}
+
+.login-link:hover {
+  background-color: #004494;
+}
+
+.home-link {
+  background-color: #e9ecef;
+  color: #495057;
+}
+
+.home-link:hover {
+  background-color: #ced4da;
+}
+
+@media (max-width: 576px) {
+  .unauthorized-card {
+    padding: 30px 20px;
+  }
+  
+  .unauthorized-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+} 

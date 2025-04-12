@@ -1,0 +1,170 @@
+.image-uploader {
+  margin-bottom: calc(var(--spacer) * 3);
+}
+
+.image-upload-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-preview-area {
+  width: 240px;
+  height: 240px;
+  border: 2px dashed var(--border-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  background-color: var(--background-light);
+  transition: all 0.2s ease;
+}
+
+.image-preview-area:hover {
+  border-color: var(--blue-primary);
+  background-color: rgba(23, 78, 166, 0.05);
+}
+
+.image-preview {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--header-p-color);
+  text-align: center;
+  padding: calc(var(--spacer) * 2);
+}
+
+.upload-icon {
+  font-size: 32px;
+  margin-bottom: calc(var(--spacer));
+  color: var(--blue-primary);
+  opacity: 0.6;
+}
+
+.file-input {
+  display: none;
+}
+
+.upload-actions {
+  margin-top: calc(var(--spacer) * 2);
+  display: flex;
+  gap: calc(var(--spacer));
+}
+
+.upload-button,
+.remove-button {
+  padding: calc(var(--spacer)) calc(var(--spacer) * 2);
+  border-radius: var(--border-radius);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.2s ease;
+}
+
+.upload-button {
+  background-color: var(--blue-primary);
+  color: white;
+}
+
+.upload-button:hover:not(:disabled) {
+  background-color: var(--blue-secondary);
+}
+
+.remove-button {
+  background-color: rgba(211, 47, 47, 0.1);
+  color: var(--error-color);
+}
+
+.remove-button:hover:not(:disabled) {
+  background-color: rgba(211, 47, 47, 0.2);
+}
+
+.upload-button:disabled,
+.remove-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.upload-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--spacer) * 2);
+}
+
+.progress-container {
+  width: 80%;
+  height: 6px;
+  background-color: var(--background-light);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-bottom: calc(var(--spacer));
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--blue-primary);
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 14px;
+  color: var(--blue-primary);
+  font-weight: 500;
+  margin-bottom: calc(var(--spacer));
+}
+
+.upload-error-message {
+  color: var(--error-color);
+  background-color: rgba(211, 47, 47, 0.1);
+  padding: calc(var(--spacer));
+  border-radius: var(--border-radius);
+  margin-top: calc(var(--spacer));
+  font-size: 14px;
+  text-align: center;
+  border-left: 3px solid var(--error-color);
+}
+
+.upload-help-text {
+  font-size: 12px;
+  color: var(--header-p-color);
+  text-align: center;
+  margin-top: calc(var(--spacer));
+}
+
+@media (max-width: 768px) {
+  .image-preview-area {
+    width: 100%;
+    max-width: 240px;
+  }
+  
+  .upload-actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 240px;
+    gap: calc(var(--spacer) * 0.5);
+  }
+  
+  .upload-button,
+  .remove-button {
+    width: 100%;
+  }
+} 

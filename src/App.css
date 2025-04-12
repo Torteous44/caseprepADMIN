@@ -1,0 +1,246 @@
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f5f7fa;
+  color: #333;
+  line-height: 1.5;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Common utility classes */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  font-size: 16px;
+  color: #6c757d;
+}
+
+/* Global button styles */
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Global container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Form styles */
+input, select, textarea {
+  font-family: inherit;
+}
+
+/* Loading overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Error styles */
+.error-message {
+  color: #d32f2f;
+  background-color: #ffebee;
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  border-left: 4px solid #d32f2f;
+}
+
+/* Common card styles */
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  padding: 20px;
+}
+
+/* Layout Styles */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  background-color: var(--blue-primary);
+  padding: calc(var(--spacer) * 2) 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.app-header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 calc(var(--spacer) * 2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.app-logo {
+  font-size: 24px;
+  font-weight: 600;
+  color: white;
+  display: flex;
+  align-items: center;
+
+}
+
+.app-logo img {
+  height: 32px;
+  margin-right: calc(var(--spacer));
+}
+
+.app-nav {
+  display: flex;
+  gap: calc(var(--spacer) * 3);
+}
+
+.nav-link {
+  color: white;
+  font-weight: 500;
+  text-decoration: none;
+  padding: calc(var(--spacer)) 0;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: white;
+  border-bottom-color: white;
+  opacity: 0.9;
+}
+
+.app-main {
+  flex: 1;
+  padding: calc(var(--spacer) * 3) 0;
+}
+
+.app-footer {
+  background-color: white;
+  padding: calc(var(--spacer) * 3) 0;
+  border-top: 1px solid var(--border-color);
+  margin-top: auto;
+}
+
+.app-footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 calc(var(--spacer) * 2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: var(--header-p-color);
+}
+
+/* Auth Pages */
+.auth-page {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: calc(var(--spacer) * 6) calc(var(--spacer) * 2);
+}
+
+.auth-card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+  padding: calc(var(--spacer) * 4);
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: calc(var(--spacer) * 4);
+}
+
+.auth-footer {
+  margin-top: calc(var(--spacer) * 3);
+  text-align: center;
+  font-size: 14px;
+  color: var(--header-p-color);
+}
+
+/* Buttons and form elements */
+.btn-primary {
+  background-color: var(--blue-primary);
+  color: white;
+}
+
+.btn-secondary {
+  background-color: white;
+  color: var(--blue-primary);
+  border: 1px solid var(--blue-primary);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(23, 78, 166, 0.05);
+}
+
+.btn-danger {
+  background-color: var(--error-color);
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #b71c1c;
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  color: var(--blue-primary);
+  padding: calc(var(--spacer)) calc(var(--spacer));
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-text:hover {
+  background-color: rgba(23, 78, 166, 0.05);
+  text-decoration: underline;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .app-header-content,
+  .app-footer-content {
+    flex-direction: column;
+    gap: calc(var(--spacer) * 2);
+  }
+  
+  .app-nav {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .auth-page {
+    padding: calc(var(--spacer) * 4) calc(var(--spacer));
+  }
+} 
