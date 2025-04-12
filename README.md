@@ -6,7 +6,7 @@ This is the admin dashboard for managing interview templates on the CasePrepared
 
 - **Authentication**: Admin-only secure login
 - **Template Management**: Create, read, update, and delete interview templates
-- **Image Upload**: Direct image uploads to Cloudflare Images
+- **Image Upload**: Direct image uploads to Cloudinary
 - **Responsive Design**: Works on desktop and mobile devices
 
 ## Technology Stack
@@ -15,7 +15,7 @@ This is the admin dashboard for managing interview templates on the CasePrepared
 - TypeScript
 - React Router for navigation
 - Axios for API communication
-- Cloudflare Images for image hosting
+- Cloudinary for image hosting
 - CSS for styling (no UI framework dependencies)
 
 ## Getting Started
@@ -45,7 +45,7 @@ npm start
 
 - Development API: `http://localhost:8000/api/v1`
 - Production API: `https://casepreparedcrud.onrender.com/api/v1`
-- Cloudflare Images API is used for image uploads
+- Cloudinary is used for image uploads through the backend API
 
 ## Authentication
 
@@ -66,10 +66,10 @@ The application uses JWT token-based authentication. Admin users can log in with
 
 ## Image Upload
 
-The application uses Cloudflare Images for image storage. When uploading an image:
+The application uses Cloudinary for image storage. When uploading an image:
 
 1. The file is selected via the ImageUploader component
-2. It's uploaded directly to Cloudflare Images API
+2. It's uploaded to Cloudinary through the backend API endpoint
 3. The resulting image URL is saved to the template
 
 ## License

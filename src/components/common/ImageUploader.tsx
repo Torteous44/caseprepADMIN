@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { uploadImageToCloudflare } from "../../utils/cloudflareImageUpload";
+import { uploadImage } from "../../utils/cloudinaryImageUpload";
 import "./ImageUploader.css";
 
 interface ImageUploaderProps {
@@ -39,11 +39,11 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
     try {
       // Simulate progress for better UX
       const progressInterval = setInterval(() => {
-        setUploadProgress((prev) => Math.min(prev + 5, 80));
+        setUploadProgress((prev) => Math.min(prev + 10, 90));
       }, 300);
 
-      // Upload the image to Cloudflare using direct creator uploads
-      const imageUrl = await uploadImageToCloudflare(file);
+      // Upload the image to Cloudinary via our backend
+      const imageUrl = await uploadImage(file);
 
       clearInterval(progressInterval);
       setUploadProgress(100);
@@ -52,12 +52,12 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
       onImageUrlChange(imageUrl);
 
       // Success message in console for debugging
-      console.log("Image uploaded successfully to Cloudflare:", imageUrl);
+      console.log("Image uploaded successfully to Cloudinary:", imageUrl);
     } catch (error: any) {
       console.error("Error details:", error);
       setUploadError(
         error.message ||
-          "Failed to upload image to Cloudflare. Please try again or contact support."
+          "Failed to upload image to Cloudinary. Please try again or contact support."
       );
     } finally {
       setIsUploading(false);
@@ -99,7 +99,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
                 ></div>
               </div>
               <div className="progress-text">
-                Uploading to Cloudflare... {uploadProgress}%
+                Uploading to Cloudinary... {uploadProgress}%
               </div>
             </div>
           )}
@@ -139,7 +139,7 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({
       {uploadError && <div className="upload-error-message">{uploadError}</div>}
 
       <p className="upload-help-text">
-        Images are uploaded directly to Cloudflare • Supported formats: JPG,
+        Images are uploaded directly to Cloudinary • Supported formats: JPG,
         PNG, GIF • Max size: 5MB
       </p>
     </div>

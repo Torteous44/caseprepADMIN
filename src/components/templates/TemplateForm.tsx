@@ -258,7 +258,7 @@ const TemplateForm: React.FC = () => {
         <div className="form-section">
           <h2>Case Image</h2>
           <p className="image-upload-note">
-            Images are uploaded directly to Cloudflare and will be saved along
+            Images are uploaded directly to Cloudinary and will be saved along
             with the template. The URL will be automatically added to the form.
           </p>
 
