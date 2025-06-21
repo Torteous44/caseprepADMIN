@@ -1,7 +1,7 @@
 import axios, { AxiosResponse, AxiosError, InternalAxiosRequestConfig } from 'axios';
 
 // Base URL is always the production URL as specified in the requirements
-const API_BASE_URL = 'https://casepreparedcrud.onrender.com/api/v1';
+const API_BASE_URL = 'http://localhost:8000/api/v1';
 
 // Create an axios instance with default configs
 const api = axios.create({
@@ -43,6 +43,7 @@ export default api;
 // Auth related API calls
 export const authApi = {
   login: async (email: string, password: string) => {
+    // Use form data for login as required by the FastAPI backend
     const formData = new URLSearchParams();
     formData.append('username', email);
     formData.append('password', password);
@@ -54,8 +55,97 @@ export const authApi = {
     });
   },
   
+  signup: async (email: string, password: string, full_name: string) => {
+    return axios.post(`${API_BASE_URL}/auth/signup`, {
+      email,
+      password,
+      full_name
+    });
+  },
+
+  refreshToken: async (refreshToken: string) => {
+    return axios.post(`${API_BASE_URL}/auth/refresh`, {
+      refresh_token: refreshToken
+    });
+  },
+  
   getCurrentUser: async () => {
     return api.get('/users/me');
+  },
+};
+
+// User management API calls
+export const userApi = {
+  getUsers: async (params = {}) => {
+    return api.get('/users', { params });
+  },
+  
+  updateUser: async (userId: string, userData: any) => {
+    return api.patch(`/users/${userId}`, userData);
+  },
+};
+
+// Lesson related API calls
+export const lessonApi = {
+  getLessons: async (params = {}) => {
+    return api.get('/lessons', { params });
+  },
+  
+  getLessonById: async (id: string) => {
+    return api.get(`/lessons/${id}`);
+  },
+  
+  createLesson: async (lessonData: any) => {
+    return api.post('/lessons', lessonData);
+  },
+  
+  updateLesson: async (id: string, lessonData: any) => {
+    return api.patch(`/lessons/${id}`, lessonData);
+  },
+  
+  deleteLesson: async (id: string) => {
+    return api.delete(`/lessons/${id}`);
+  },
+};
+
+// Interview related API calls
+export const interviewApi = {
+  createInterview: async (lessonId: string) => {
+    return api.post('/interviews', { lesson_id: lessonId });
+  },
+  
+  getInterviews: async (params = {}) => {
+    return api.get('/interviews', { params });
+  },
+  
+  getInterviewById: async (id: string) => {
+    return api.get(`/interviews/${id}`);
+  },
+};
+
+// Embedding generation API calls
+export const embeddingApi = {
+  generateEmbedding: async (text: string) => {
+    return api.post('/interviews/embeddings', { text });
+  },
+  
+  generateBatchEmbeddings: async (texts: string[]) => {
+    return api.post('/interviews/embeddings/batch', { texts });
+  },
+};
+
+// Subscription management API calls
+export const subscriptionApi = {
+  createCheckoutSession: async (plan: string, successUrl: string, cancelUrl: string) => {
+    return api.post('/billing/checkout', {
+      plan,
+      success_url: successUrl,
+      cancel_url: cancelUrl
+    });
+  },
+  
+  createBillingPortalSession: async (returnUrl: string = "https://app.caseprepared.com/account") => {
+    return api.post('/billing/portal', {}, { params: { return_url: returnUrl } });
   },
 };
 
@@ -79,24 +169,5 @@ export const templateApi = {
   
   deleteTemplate: async (id: string) => {
     return api.delete(`/templates/${id}`);
-  },
-};
-
-// Interview related API calls
-export const interviewApi = {
-  getAdminInterviews: async (params = {}) => {
-    return api.get('/interviews', { params });
-  },
-  
-  getInterviewById: async (id: string) => {
-    return api.get(`/interviews/${id}`);
-  },
-  
-  updateInterviewStatus: async (id: string, data: any) => {
-    return api.patch(`/interviews/${id}`, data);
-  },
-  
-  deleteInterview: async (id: string) => {
-    return api.delete(`/interviews/${id}`);
   },
 }; 

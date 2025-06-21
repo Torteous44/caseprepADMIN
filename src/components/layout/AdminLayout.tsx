@@ -42,6 +42,14 @@ const AdminLayout: React.FC = () => {
                   Templates
                 </NavLink>
               </li>
+              <li>
+                <NavLink
+                  to="/admin/lessons"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Lessons
+                </NavLink>
+              </li>
             </ul>
           </nav>
         </aside>
